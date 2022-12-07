@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Issue Board{% endblock title %}
+
+
+{% block content %}
+<h1>Issue Board</h1>
+{% for issues in issue_board %}
+    <div class="card">
+        <h5 class="card-header">{{ issue.title }}</h5>
+        <div class="card-body">
+        <h5 class="card-title">{{ issue.subtitle }}</h5>
+        <p class="card-text">{{ issue.body|truncatechars:50 }}</p>
+        <a href="{% url 'detail' issue.id %}" class="btn btn-primary">Read More</a>
+        </div>
+    </div>
+    <br />
+{% endfor %}
+{% endblock content %}
